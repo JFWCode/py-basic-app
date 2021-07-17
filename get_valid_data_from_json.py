@@ -80,8 +80,34 @@ def fib(n):
     return fib(n-1) + fib(n-2)
 
 
+def solution(d):
+    # 在这⾥写代码
+    sorted_d = sorted(d.items(), key=lambda item:(item[1], item[0]), reverse=True)
+    return sorted_d
+
+
+def lengthOfLongestSubstring(s):
+    dic = {}
+    res = tmp = 0
+    for j in range(len(s)):
+        i = dic.get(s[j], -1)
+        dic[s[j]] = j
+        tmp = tmp + 1 if tmp < j - i else j - i
+        res = max(res, tmp)
+    return res
+
+
+
 if __name__ == '__main__':
     # data = json.loads(z)
     # r_data = dealwith_json_data(data)
     # print(r_data)
-    print(fib(5))
+    #print(fib(5))
+    # d = {7: 2, 10: 33, 4: 11, 9: 11, 5: 14, 3: 8, 12: 11}
+    # print(solution(d))
+    # d = {1: 2, 0: 3, 4: 1, 9: 2, 5: 14, 3: 8, 2: 2}
+    # print(solution(d))
+
+    s = '12301239'
+    r = lengthOfLongestSubstring(s)
+    print(r)
